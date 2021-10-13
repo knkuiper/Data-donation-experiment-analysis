@@ -1,7 +1,7 @@
 {
     "id": "A16C9FD4",
-    "path": "~/Developer/UU-coding/HCI-scriptie/Data donation experiment analysis/02_analysis.R",
-    "project_path": "02_analysis.R",
+    "path": "~/Developer/UU-coding/HCI-scriptie/Data donation experiment analysis/02_eda.R",
+    "project_path": "02_eda.R",
     "type": "r_source",
     "hash": "0",
     "contents": "",
@@ -13,16 +13,16 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "17,0",
-        "scrollLine": "0",
+        "cursorPosition": "47,32",
+        "scrollLine": "27",
         "docOutlineVisible": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1634127164,
+    "lastKnownWriteTime": 1634133692,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1634127164272,
+    "last_content_update": 1634133692650,
     "read_only": false,
     "read_only_alternatives": []
 }
