@@ -17,16 +17,15 @@ pre_survey_text <- read_excel("data/Pre-experiment survey_text.xlsx")
 excluded <- list(91093, 81153, 30358, 54779, 37020, 95171, 10493, 63781, 24724, 
                  28163, 67340, 95639, 20643, 53509, 67691, 64339, 99237)
 
-nonresponse <- list(81921, 46588, 72432, 93615, 98612, 82350, 59668, 63680, 35211, 88229)
-
-##Likely nonresponses 94747, 48150, 85706, 53568, 15561, 98399, 25718, 32307, 51944, 33926
+nonresponse <- list(81921, 46588, 72432, 93615, 98612, 82350, 59668, 63680, 35211, 88229, 
+                    94747, 48150, 85706, 53568, 15561, 98399, 25718, 32307, 51944, 33926)
 
 pre_survey_filtered <- pre_survey_text %>% 
   slice(-1) %>%
   dplyr::select(19, 21:31) %>%
-  filter(!ParticipantID %in% c(excluded)) %>%
-  filter(!ParticipantID %in% c(nonresponse)) %>%
-  #mutate(Q3.2 = as.numeric(Q3.2))
+  dplyr::filter(!ParticipantID %in% c(excluded)) %>%
+  dplyr::filter(!ParticipantID %in% c(nonresponse)) # %>%
+  #dplyr::mutate(Q3.2 = as.numeric(Q3.2))
 
 # write out new datafile
 write_csv(pre_survey_filtered, file="data/Clean_data/pre_survey")

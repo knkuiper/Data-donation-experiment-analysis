@@ -18,6 +18,8 @@
 /*.Rcheck/
 
 # RStudio files
+.Rproj.user
+.Rproj.user*
 .Rproj.user/
 .Rproj.user/*
 
@@ -38,17 +40,4 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
-.Rproj.user/60DD2CA7/sources/prop/8F9C22BC
-.Rproj.user/60DD2CA7/sources/prop/8F9C22BC
-.Rproj.user/60DD2CA7/sources/prop/BE039F48
-.Rproj.user/60DD2CA7/sources/prop/INDEX
-.Rproj.user/60DD2CA7/sources/prop/8F9C22BC
-.Rproj.user/shared/notebooks/paths
-.Rproj.user/60DD2CA7/sources/prop/8F9C22BC
-.Rproj.user/60DD2CA7/sources/prop/BE039F48
-.Rproj.user/60DD2CA7/sources/prop/INDEX
-.Rproj.user/60DD2CA7/sources/s-573FFB8E/695317AD
-.Rproj.user/60DD2CA7/sources/s-573FFB8E/695317AD-contents
-.Rproj.user/60DD2CA7/sources/s-573FFB8E/A16C9FD4
-.Rproj.user/60DD2CA7/sources/s-573FFB8E/A16C9FD4-contents
-.Rproj.user/shared/notebooks/paths
+*.pper
