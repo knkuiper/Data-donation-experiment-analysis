@@ -1,25 +1,25 @@
-Q3.1,Q3.2,Q3.3,Q4.2,Q4.3,Q4.4,Q4.5,Q5.2,Q5.3,Q5.4,ParticipantID,Group
-Woman,26,Master's degree,Agree,Agree,Somewhat agree,Agree,Somewhat agree,Neither agree nor disagree,Somewhat agree,36110,Group 5
-Man,62,PhD,Neither agree nor disagree,Neither agree nor disagree,Somewhat disagree,Neither agree nor disagree,Somewhat disagree,Somewhat disagree,Somewhat disagree,18413,Group 2
-Woman,29,Master's degree,Strongly agree,Strongly agree,Agree,Strongly agree,Agree,Agree,Agree,90593,Group 4
-Man,66,Master's degree,Somewhat agree,Somewhat agree,Somewhat agree,Agree,Somewhat agree,Somewhat agree,Agree,15550,Group 2
-Woman,25,Master's degree,Strongly agree,Somewhat agree,Somewhat agree,Agree,Somewhat agree,Somewhat agree,Neither agree nor disagree,39984,Group 4
-Man,27,Bachelor's degree,Agree,Agree,Agree,Strongly agree,Agree,Agree,Neither agree nor disagree,65032,Group 2
-Man,33,Bachelor's degree,Somewhat agree,Agree,Somewhat agree,Agree,Somewhat disagree,Somewhat agree,Neither agree nor disagree,42739,Group 3
-Man,37,Master's degree,Agree,Somewhat agree,Somewhat agree,Agree,Somewhat agree,Somewhat agree,Agree,34376,Group 4
-Woman,50,Bachelor's degree,Agree,Agree,Agree,Somewhat agree,Agree,Agree,Somewhat agree,12622,Group 2
-Woman,32,Bachelor's degree,Agree,Agree,Neither agree nor disagree,Agree,Somewhat agree,Somewhat agree,Somewhat agree,96200,Group 6
-Woman,30,Bachelor's degree,Agree,Somewhat agree,Neither agree nor disagree,Agree,Agree,Agree,Neither agree nor disagree,22581,Group 6
-Woman,26,Master's degree,Agree,Agree,Agree,Agree,Agree,Agree,Agree,14609,Group 3
-Woman,27,Master's degree,Agree,Somewhat agree,Agree,Agree,Agree,Agree,Agree,18257,Group 4
-Woman,29,Bachelor's degree,Strongly agree,Strongly agree,Agree,Agree,Somewhat agree,Agree,Agree,61014,Group 6
-Man,38,PhD,Somewhat disagree,Disagree,Neither agree nor disagree,Somewhat agree,Neither agree nor disagree,Neither agree nor disagree,Somewhat agree,67484,Group 3
-Woman,25,Bachelor's degree,Agree,Somewhat disagree,Somewhat agree,Agree,Somewhat agree,Somewhat agree,Agree,59485,Group 6
-Man,27,Bachelor's degree,Somewhat agree,Somewhat agree,Somewhat agree,Agree,Agree,Agree,Agree,11942,Group 5
-Woman,40,Master's degree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Somewhat agree,Somewhat disagree,Somewhat disagree,Somewhat disagree,96216,Group 1
-Woman,29,Bachelor's degree,Somewhat agree,Somewhat agree,Neither agree nor disagree,Neither agree nor disagree,Agree,Agree,Agree,39050,Group 4
-Man,30,Master's degree,Agree,Somewhat agree,Agree,Strongly agree,Somewhat disagree,Agree,Somewhat agree,12430,Group 5
-Woman,28,Bachelor's degree,Somewhat agree,Neither agree nor disagree,Somewhat disagree,Somewhat agree,Somewhat agree,Agree,Somewhat agree,30524,Group 2
-Man,25,Bachelor's degree,Somewhat disagree,Disagree,Somewhat agree,Somewhat agree,Disagree,Disagree,Somewhat agree,86891,Group 1
-Woman,24,Bachelor's degree,Agree,Neither agree nor disagree,Somewhat agree,Agree,Somewhat disagree,Neither agree nor disagree,Neither agree nor disagree,29957,Group 6
-Man,28,Bachelor's degree,Agree,Somewhat agree,Somewhat agree,Strongly agree,Somewhat agree,Somewhat agree,Somewhat agree,96722,Group 5
+Q3.1,Q3.2,Q3.3,Q4.2,Q4.3,Q4.4,Q4.5,Q5.2,Q5.3,Q5.4,ParticipantID
+Woman,26.0,Master's degree,6,6,5,6,5,4,5,36110
+Man,62.0,PhD,4,4,3,4,3,3,3,18413
+Woman,29.0,Master's degree,7,7,6,7,6,6,6,90593
+Man,66.0,Master's degree,5,5,5,6,5,5,6,15550
+Woman,25.0,Master's degree,7,5,5,6,5,5,4,39984
+Man,27.0,Bachelor's degree,6,6,6,7,6,6,4,65032
+Man,33.0,Bachelor's degree,5,6,5,6,3,5,4,42739
+Man,37.0,Master's degree,6,5,5,6,5,5,6,34376
+Woman,50.0,Bachelor's degree,6,6,6,5,6,6,5,12622
+Woman,32.0,Bachelor's degree,6,6,4,6,5,5,5,96200
+Woman,30.0,Bachelor's degree,6,5,4,6,6,6,4,22581
+Woman,26.0,Master's degree,6,6,6,6,6,6,6,14609
+Woman,27.0,Master's degree,6,5,6,6,6,6,6,18257
+Woman,29.0,Bachelor's degree,7,7,6,6,5,6,6,61014
+Man,38.0,PhD,3,2,4,5,4,4,5,67484
+Woman,25.0,Bachelor's degree,6,3,5,6,5,5,6,59485
+Man,27.0,Bachelor's degree,5,5,5,6,6,6,6,11942
+Woman,40.0,Master's degree,4,4,4,5,3,3,3,96216
+Woman,29.0,Bachelor's degree,5,5,4,4,6,6,6,39050
+Man,30.0,Master's degree,6,5,6,7,3,6,5,12430
+Woman,28.0,Bachelor's degree,5,4,3,5,5,6,5,30524
+Man,25.0,Bachelor's degree,3,2,5,5,2,2,5,86891
+Woman,24.0,Bachelor's degree,6,4,5,6,3,4,4,29957
+Man,28.0,Bachelor's degree,6,5,5,7,5,5,5,96722

@@ -9,6 +9,7 @@ library(ggplot2)
 library(ggpubr)
 library(viridis)
 library(car)
+library(rstatix)
 
 ## Load data
 pre_survey <- read_csv("data/Clean_data/pre_survey")
@@ -27,6 +28,7 @@ post_survey <- read_csv("data/Clean_data/post_survey")
 
 #Faith in general technology Q4.2 - Q4.5
 
+
 #Trusting stance Q5.2 - Q5.4
 
 
@@ -35,15 +37,42 @@ post_survey <- read_csv("data/Clean_data/post_survey")
 #Trust in specific technology Q3.2 - Q3.7
 
 
+aggregate(Q3.2 ~ Condition, 
+          data = experiment_rounds,
+          function(x) round(c(mean = mean(x), sd = sd(x)), 2)
+)
+
+aggregate(Q3.3 ~ Condition, 
+          data = experiment_rounds,
+          function(x) round(c(mean = mean(x), sd = sd(x)), 2)
+)
+
+aggregate(Q3.4 ~ Condition, 
+          data = experiment_rounds,
+          function(x) round(c(mean = mean(x), sd = sd(x)), 2)
+)
+
+aggregate(Q3.5 ~ Condition, 
+          data = experiment_rounds,
+          function(x) round(c(mean = mean(x), sd = sd(x)), 2)
+)
+
+aggregate(Q3.6 ~ Condition, 
+          data = experiment_rounds,
+          function(x) round(c(mean = mean(x), sd = sd(x)), 2)
+)
+
+aggregate(Q3.7 ~ Condition, 
+          data = experiment_rounds,
+          function(x) round(c(mean = mean(x), sd = sd(x)), 2)
+)
 
 
 #Scale data
+#PCA
 #Friedman test
 
 #normality
-shapiro.test(dat_hist$value)
-
-
 
 
 
@@ -70,8 +99,8 @@ h2_res_aov <- aov(Q2.2_1 ~ Condition, data = willingness_level)
 
 summary(h2_res_aov)
 #             Df Sum Sq Mean Sq F value Pr(>F)
-# Condition    2   3.12   1.560   0.843  0.436
-# Residuals   59 109.22   1.851               
+# Condition    2   2.72   1.358   0.746  0.479
+# Residuals   60 109.22   1.820               
 # 1 observation deleted due to missingness
 
 # Not statistically significant, cannot reject the null hypothesis
@@ -96,28 +125,20 @@ shapiro.test(experiment_rounds$Q2.2_1)
 plot(h2_res_aov, which = 2)
 
 #not assume normality
-kruskal.test(Q2.2_1 ~ Condition, data = experiment_rounds)
-
-#Willingness per condition
-ggplot(experiment_rounds, aes(x = Condition, y = Q2.2_1, fill = Condition)) +
-  geom_boxplot() +
-  scale_fill_brewer(palette = "Set2") +
-  ylim(0, 10) +
-  labs(title = "Donation willingness per condition", x = "", y = "Scale") +
-  theme_minimal() +
-  theme(legend.position = "none")
+#experiment_rounds %>% friedman_test(Q2.2_1 ~ Condition |ParticipantID)
+# does not work because "not an unreplicated complete block design"
 
 # descriptive statistics 
 aggregate(Q2.2_1 ~ Condition, 
           data = experiment_rounds,
           function(x) round(c(mean = mean(x), sd = sd(x)), 2)
 )
-#   Condition   Q2.2_1.mean Q2.2_1.sd
-# 1 Condition A        8.11      1.10
+#   Condition Q2.2_1.mean Q2.2_1.sd
+# 1 Condition A        8.05      1.10
 # 2 Condition B        7.59      1.53
-# 3 Condition C        7.55      1.39 
+# 3 Condition C        7.62      1.36
 
-ggqqplot(willingness_level, "Q2.2_1", facet.by = "Condition")
+ggqqplot(willingness_level, "Q2.2_1", facet.by = "Condition", title = "H2 Willingness")
 
 ########################################################################
 # H3 Confidence in donation
@@ -151,8 +172,8 @@ h3_res_aov <- aov(Confidence_level ~ Condition, data = conf_condition)
 
 summary(h3_res_aov)
 #             Df Sum Sq Mean Sq F value Pr(>F)
-# Condition    2    9.4   4.702   1.241  0.297
-# Residuals   54  204.5   3.788   
+# Condition    2   8.93   4.467    1.24  0.297
+# Residuals   57 205.25   3.601       
 
 # Not statistically significant, cannot reject the null hypothesis
 
@@ -201,4 +222,4 @@ aggregate(Confidence_level ~ Condition,
 # 2 Condition B                  7.47                2.12
 # 3 Condition C                  7.68                1.45  
 
-ggqqplot(conf_condition, "Confidence_level", facet.by = "Condition")
+ggqqplot(conf_condition, "Confidence_level", facet.by = "Condition", title = "H3 Confidence in donation")

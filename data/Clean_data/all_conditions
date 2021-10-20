@@ -1,67 +1,68 @@
 Q2.1,Q2.2_1,Q2.3,Q2.4,Q3.2,Q3.3,Q3.4,Q3.5,Q3.6,Q3.7,ParticipantID,Round,Condition
-Yes,7.0,helping other students / interesting topic,NA,Strongly agree,Strongly agree,Strongly agree,Agree,Agree,Agree,65032,Round1,Condition A
-Yes,8.0,om deze studie te ondersteunen,NA,Agree,Agree,Strongly agree,Agree,Neither agree nor disagree,Neither agree nor disagree,15550,Round1,Condition A
-Yes,9.0,personal contact,NA,Somewhat agree,Neither agree nor disagree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat disagree,18413,Round1,Condition A
+Yes,7.0,helping other students / interesting topic,NA,7,7,7,6,6,6,65032,Round1,Condition A
+Yes,8.0,om deze studie te ondersteunen,NA,6,6,7,6,4,4,15550,Round1,Condition A
+Yes,9.0,personal contact,NA,5,4,5,5,5,3,18413,Round1,Condition A
 Yes,NA,NA,NA,NA,NA,NA,NA,NA,NA,12622,Round1,Condition A
-Yes,9.0,as a friendly favor and I trust that is anonymous,NA,Strongly agree,Strongly agree,Strongly agree,Strongly agree,Strongly agree,Strongly agree,30524,Round1,Condition A
-Yes,9.0,To help scientific research; the data was anonymised,NA,Agree,Strongly agree,Strongly agree,Strongly agree,Strongly agree,Strongly agree,86891,Round1,Condition A
-Yes,9.0,To help my friend,NA,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,90593,Round2,Condition A
-Yes,9.0,To help the research,NA,Somewhat agree,Somewhat agree,Agree,Agree,Agree,Agree,36110,Round2,Condition A
+Yes,9.0,as a friendly favor and I trust that is anonymous,NA,7,7,7,7,7,7,30524,Round1,Condition A
+Yes,9.0,To help scientific research; the data was anonymised,NA,6,7,7,7,7,7,86891,Round1,Condition A
+Yes,9.0,To help my friend,NA,4,4,4,4,4,4,90593,Round2,Condition A
+Yes,9.0,To help the research,NA,5,5,6,6,6,6,36110,Round2,Condition A
 Yes,6.0,"Asked by one of the studyorganizers
-",NA,Neither agree nor disagree,Neither agree nor disagree,Agree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,34376,Round2,Condition A
-Yes,7.0,To help with a science project,NA,Neither agree nor disagree,Neither agree nor disagree,Somewhat disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,39984,Round2,Condition A
-Yes,9.0,For science! :),NA,Strongly agree,Strongly agree,Strongly agree,Strongly agree,Strongly agree,Strongly agree,11942,Round2,Condition A
-Yes,8.0,Because the survey required me to,NA,Agree,Agree,Strongly agree,Agree,Agree,Agree,18257,Round2,Condition A
-Yes,9.0,Because why not,NA,Agree,Agree,Agree,Somewhat agree,Neither agree nor disagree,Neither agree nor disagree,39050,Round2,Condition A
-Yes,7.0,To help out with the survey & seams to only share anonymous data,NA,Agree,Agree,Agree,Agree,Agree,Agree,12430,Round2,Condition A
-Yes,9.0,I did it once already.,NA,Agree,Agree,Agree,Somewhat agree,Somewhat agree,Somewhat agree,96722,Round2,Condition A
-Yes,9.0,Done it before,NA,Somewhat agree,Somewhat agree,Agree,Somewhat agree,Agree,Agree,96200,Round3,Condition A
-Yes,9.0,To help with the research,NA,Agree,Agree,Agree,Agree,Agree,Agree,22581,Round3,Condition A
+",NA,4,4,6,4,4,4,34376,Round2,Condition A
+Yes,7.0,To help with a science project,NA,4,4,3,4,4,4,39984,Round2,Condition A
+Yes,9.0,For science! :),NA,7,7,7,7,7,7,11942,Round2,Condition A
+Yes,8.0,Because the survey required me to,NA,6,6,7,6,6,6,18257,Round2,Condition A
+Yes,9.0,Because why not,NA,6,6,6,5,4,4,39050,Round2,Condition A
+Yes,7.0,To help out with the survey & seams to only share anonymous data,NA,6,6,6,6,6,6,12430,Round2,Condition A
+Yes,9.0,I did it once already.,NA,6,6,6,5,5,5,96722,Round2,Condition A
+Yes,9.0,Done it before,NA,5,5,6,5,6,6,96200,Round3,Condition A
+Yes,9.0,To help with the research,NA,6,6,6,6,6,6,22581,Round3,Condition A
 Yes,8.0,"Same reasons as before. It's not a lot of data and I already have it in the zip file now, so that makes it easier.
-",NA,Strongly agree,Strongly agree,Strongly agree,Somewhat agree,Agree,Agree,59485,Round3,Condition A
+",NA,7,7,7,5,6,6,59485,Round3,Condition A
 Yes,7.0,"Contribute to research
-",NA,Agree,Agree,Agree,Agree,Agree,Agree,14609,Round3,Condition A
-Yes,6.0,"did is last 2 times, who not now",NA,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,29957,Round3,Condition A
-Yes,7.0,I trust its safe,NA,Agree,Agree,Agree,Agree,Agree,Agree,42739,Round3,Condition A
-Yes,7.0,Because I know it's for a science project. And I think science is important,NA,Somewhat agree,Somewhat agree,Disagree,Somewhat agree,Somewhat agree,Somewhat agree,39984,Round1,Condition B
-Yes,9.0,Want to be helpfull,NA,Neither agree nor disagree,Neither agree nor disagree,Agree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,90593,Round1,Condition B
-Yes,7.0,I was asked and would like to support the project,NA,Neither agree nor disagree,Agree,Agree,Agree,Neither agree nor disagree,Agree,34376,Round1,Condition B
-Yes,9.0,To contribute to research.,NA,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Agree,Agree,Agree,14609,Round1,Condition B
-Yes,8.0,Because the study required it,NA,Agree,Somewhat agree,Somewhat agree,Agree,Somewhat agree,Agree,18257,Round1,Condition B
+",NA,6,6,6,6,6,6,14609,Round3,Condition A
+Yes,6.0,"did is last 2 times, who not now",NA,5,5,5,5,5,5,29957,Round3,Condition A
+Yes,7.0,I trust its safe,NA,6,6,6,6,6,6,42739,Round3,Condition A
+Yes,7.0,Because I know it's for a science project. And I think science is important,NA,5,5,2,5,5,5,39984,Round1,Condition B
+Yes,9.0,Want to be helpfull,NA,4,4,6,4,4,4,90593,Round1,Condition B
+Yes,7.0,I was asked and would like to support the project,NA,4,6,6,6,4,6,34376,Round1,Condition B
+Yes,9.0,To contribute to research.,NA,4,4,4,6,6,6,14609,Round1,Condition B
+Yes,8.0,Because the study required it,NA,6,5,5,6,5,6,18257,Round1,Condition B
 Yes,8.0,I am interested in data donation too! ;-),NA,NA,NA,NA,NA,NA,NA,67484,Round1,Condition B
-Yes,9.0,Because I wanted to.,NA,Somewhat agree,Neither agree nor disagree,Neither agree nor disagree,Somewhat agree,Neither agree nor disagree,Neither agree nor disagree,39050,Round1,Condition B
-Yes,5.0,Only did it for the survey,NA,Somewhat disagree,Neither agree nor disagree,Somewhat agree,Somewhat agree,Agree,Agree,42739,Round1,Condition B
-Yes,8.0,The same as last time. It was clear that I was only giving that small table of data and not ALL my location data. I felt like that part of the data would not infiltrate my privacy.,NA,Agree,Strongly agree,Agree,Neither agree nor disagree,Somewhat agree,Somewhat agree,59485,Round2,Condition B
-Yes,9.0,Because i want to,NA,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,61014,Round2,Condition B
-Yes,8.0,I found no reason not to.,NA,Agree,Agree,Agree,Agree,Agree,Agree,96200,Round2,Condition B
-Yes,4.0,help the research,NA,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,96216,Round2,Condition B
-Yes,8.0,To help with the research,NA,Agree,Agree,Agree,Agree,Agree,Agree,22581,Round2,Condition B
-Yes,4.0,"I already did the first round, so why not now",NA,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,29957,Round2,Condition B
-Yes,9.0,For research purposes to help research on the pandemic,NA,Agree,Agree,Agree,Agree,Agree,Agree,36110,Round3,Condition B
-Yes,7.0,I don't mind using my data for a study,NA,Agree,Agree,Agree,Agree,Agree,Agree,65032,Round3,Condition B
-Yes,7.0,for research,NA,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,18413,Round3,Condition B
-Yes,8.0,Om mee te werken aan het onderzoek,NA,Agree,Agree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,15550,Round3,Condition B
-Yes,9.0,Science!,NA,Strongly agree,Strongly agree,Strongly agree,Strongly agree,Strongly agree,Strongly agree,11942,Round3,Condition B
-Yes,8.0,i guess i have no choice,NA,Strongly agree,Strongly agree,Strongly agree,Strongly agree,Strongly agree,Strongly agree,30524,Round3,Condition B
-Yes,7.0,As I trust this data will not be used for other intentions outside of research,NA,Agree,Agree,Agree,Agree,Agree,Agree,12430,Round3,Condition B
-Yes,9.0,I've done it before.,NA,Agree,Agree,Agree,Agree,Agree,Agree,96722,Round3,Condition B
-Yes,7.0,Because I know it's for a science project. And I think science is important,NA,Somewhat agree,Somewhat agree,Disagree,Somewhat agree,Somewhat agree,Somewhat agree,39984,Round1,Condition C
-Yes,9.0,Want to be helpfull,NA,Neither agree nor disagree,Neither agree nor disagree,Agree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,90593,Round1,Condition C
-Yes,7.0,I was asked and would like to support the project,NA,Neither agree nor disagree,Agree,Agree,Agree,Neither agree nor disagree,Agree,34376,Round1,Condition C
-Yes,9.0,To contribute to research.,NA,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Agree,Agree,Agree,14609,Round1,Condition C
-Yes,8.0,Because the study required it,NA,Agree,Somewhat agree,Somewhat agree,Agree,Somewhat agree,Agree,18257,Round1,Condition C
-Yes,8.0,I am interested in data donation too! ;-),NA,NA,NA,NA,NA,NA,NA,67484,Round1,Condition C
-Yes,9.0,Because I wanted to.,NA,Somewhat agree,Neither agree nor disagree,Neither agree nor disagree,Somewhat agree,Neither agree nor disagree,Neither agree nor disagree,39050,Round1,Condition C
-Yes,5.0,Only did it for the survey,NA,Somewhat disagree,Neither agree nor disagree,Somewhat agree,Somewhat agree,Agree,Agree,42739,Round1,Condition C
-Yes,8.0,Contribute to research.,NA,Agree,Agree,Agree,Agree,Agree,Agree,14609,Round2,Condition C
-Yes,8.0,Helping other students,NA,Agree,Agree,Agree,Agree,Agree,Agree,65032,Round2,Condition C
-Yes,7.0,because I know the person that I donate the data to,NA,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,18413,Round2,Condition C
-Yes,8.0,om je te helpen bij het onderzoek,NA,Somewhat agree,Agree,Agree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,15550,Round2,Condition C
-Yes,9.0,part of experiment - 2nd round,NA,Neither agree nor disagree,Agree,Strongly agree,Agree,Strongly agree,Strongly agree,30524,Round2,Condition C
-Yes,5.0,For the research.,NA,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,Somewhat agree,42739,Round2,Condition C
-Yes,9.0,Help the study.,NA,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,90593,Round3,Condition C
-Yes,6.0,Asked by study organizer,NA,Neither agree nor disagree,Agree,Agree,Neither agree nor disagree,Agree,Agree,34376,Round3,Condition C
-Yes,5.0,support the research,NA,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,96216,Round3,Condition C
-Yes,7.0,for a science project,NA,Agree,Agree,Disagree,Neither agree nor disagree,Neither agree nor disagree,Neither agree nor disagree,39984,Round3,Condition C
-Yes,8.0,For the purpose of the study,NA,Agree,Agree,Agree,Agree,Agree,Agree,18257,Round3,Condition C
-Yes,9.0,Because I wanted to consent data.,NA,Somewhat agree,Agree,Neither agree nor disagree,Neither agree nor disagree,Somewhat agree,Somewhat agree,39050,Round3,Condition C
+Yes,9.0,Because I wanted to.,NA,5,4,4,5,4,4,39050,Round1,Condition B
+Yes,5.0,Only did it for the survey,NA,3,4,5,5,6,6,42739,Round1,Condition B
+Yes,8.0,The same as last time. It was clear that I was only giving that small table of data and not ALL my location data. I felt like that part of the data would not infiltrate my privacy.,NA,6,7,6,4,5,5,59485,Round2,Condition B
+Yes,9.0,Because i want to,NA,5,5,5,5,5,5,61014,Round2,Condition B
+Yes,8.0,I found no reason not to.,NA,6,6,6,6,6,6,96200,Round2,Condition B
+Yes,4.0,help the research,NA,4,4,4,4,4,4,96216,Round2,Condition B
+Yes,8.0,To help with the research,NA,6,6,6,6,6,6,22581,Round2,Condition B
+Yes,4.0,"I already did the first round, so why not now",NA,5,5,5,5,5,5,29957,Round2,Condition B
+Yes,9.0,For research purposes to help research on the pandemic,NA,6,6,6,6,6,6,36110,Round3,Condition B
+Yes,7.0,I don't mind using my data for a study,NA,6,6,6,6,6,6,65032,Round3,Condition B
+Yes,7.0,for research,NA,5,5,5,5,5,5,18413,Round3,Condition B
+Yes,8.0,Om mee te werken aan het onderzoek,NA,6,6,4,4,4,4,15550,Round3,Condition B
+Yes,9.0,Science!,NA,7,7,7,7,7,7,11942,Round3,Condition B
+Yes,8.0,i guess i have no choice,NA,7,7,7,7,7,7,30524,Round3,Condition B
+Yes,7.0,As I trust this data will not be used for other intentions outside of research,NA,6,6,6,6,6,6,12430,Round3,Condition B
+Yes,9.0,I've done it before.,NA,6,6,6,6,6,6,96722,Round3,Condition B
+Yes,8.0,Research is important.,NA,5,5,5,5,5,4,96200,Round1,Condition C
+Yes,9.0,Because it is important,NA,4,4,6,4,4,5,61014,Round1,Condition C
+Yes,8.0,I don't mind at all if my data is used for scientific purposes :),NA,6,6,6,6,6,6,11942,Round1,Condition C
+Yes,9.0,To help research and a good cause,NA,6,5,5,5,5,6,36110,Round1,Condition C
+Yes,8.0,"At first I was skeptical. I did not know what was in the file to be honest, and felt like I was giving away all my location data of the past X years. But then a small clear table was shown with the data that was needed (and thus handed in), which made it pretty clear they weren't 'ripping me off' of all my data. So in the end, I was pretty willing to consent. And I trust the fact that not all data was send to the research, just that small part they needed.",NA,5,7,7,6,5,4,59485,Round1,Condition C
+Yes,9.0,To help with the research,NA,6,6,7,6,6,6,22581,Round1,Condition C
+Yes,7.0,Trusting that the data will be handled somewhat anonymously and only the data shown to me in the last step is shared. Im fine with that but its based on trust.,NA,6,7,7,7,7,6,12430,Round1,Condition C
+Yes,5.0,"because apparently you need it for your thesis :P, and I looked at the data myself which was to be shared, and it's safe, not personal, just a few numbers",NA,5,5,5,5,5,5,29957,Round1,Condition C
+Yes,8.0,The data was reasonably anonymized and the usage was explained.,NA,7,7,7,5,5,5,96722,Round1,Condition C
+Yes,8.0,Contribute to research.,NA,6,6,6,6,6,6,14609,Round2,Condition C
+Yes,8.0,Helping other students,NA,6,6,6,6,6,6,65032,Round2,Condition C
+Yes,7.0,because I know the person that I donate the data to,NA,5,5,5,5,5,5,18413,Round2,Condition C
+Yes,8.0,om je te helpen bij het onderzoek,NA,5,6,6,4,4,4,15550,Round2,Condition C
+Yes,9.0,part of experiment - 2nd round,NA,4,6,7,6,7,7,30524,Round2,Condition C
+Yes,5.0,For the research.,NA,5,5,5,5,5,5,42739,Round2,Condition C
+Yes,9.0,Help the study.,NA,4,4,4,4,4,4,90593,Round3,Condition C
+Yes,6.0,Asked by study organizer,NA,4,6,6,4,6,6,34376,Round3,Condition C
+Yes,5.0,support the research,NA,4,4,4,4,4,4,96216,Round3,Condition C
+Yes,7.0,for a science project,NA,6,6,2,4,4,4,39984,Round3,Condition C
+Yes,8.0,For the purpose of the study,NA,6,6,6,6,6,6,18257,Round3,Condition C
+Yes,9.0,Because I wanted to consent data.,NA,5,6,4,4,5,5,39050,Round3,Condition C

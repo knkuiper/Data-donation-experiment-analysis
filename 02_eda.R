@@ -50,6 +50,7 @@ pre_survey %>%
   mutate(Q3.3 = factor(Q3.3, levels = c("High school", "Bachelor's degree", "Master's degree", "PhD"))) %>% 
     ggplot(aes(x = Q3.3, fill = Q3.3)) + 
     geom_bar() +
+    scale_x_discrete(labels = labels_barchart, drop = FALSE) +
     scale_fill_brewer(palette="Set2") +
     labs(title= "Education distribution", x = "", y = "Count") + #x = "Highest level of education",
     theme_minimal() +
@@ -57,17 +58,112 @@ pre_survey %>%
 
 ggsave("figures/educ_dist.png")
 
-### Trust in general technology / Propensity to trust ------------
+### Propensity to trust ------------
+levels_barchart = c("1", "2", "3", "4", "5", "6", "7")
+colors_barchart = c("1" = "#E69F00", "2" = "#56B4E9", "3" = "#009E73", "4" = "#F0E442", "5" = "#0072B2", "6" = "#D55E00", "7" = "#CC79A7", "NA" = "#999999")
+labels_barchart = c("Strongly disagree", "Disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Agree", "Strongly agree")
+#colors_barchart = c("Strongly disagree" = "#E69F00", "Disagree" = "#56B4E9", "Somewhat disagree" = "#009E73", "Neither agree nor disagree" = "#F0E442", "Somewhat agree" = "#0072B2", "Agree" = "#D55E00", "Strongly agree" = "#CC79A7", "NA" = "#999999")
 
-ggplot(pre_survey, aes(x = Q4.2, fill = Q4.2)) +
+#Faith in general technology Q4.2 - Q4.5
+pre_survey %>%
+  mutate(Q4.2 = factor(Q4.2, levels_barchart)) %>%
+    ggplot(aes(x = Q4.2, fill = Q4.2)) +
+    geom_bar() +
+    scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+    scale_fill_manual("legend", values = colors_barchart) +
+    labs(title= "Faith in general technology Q4.2", x = "Q4.2", y = "Count") +
+    theme_minimal() +
+    theme(legend.position = "none") + 
+    ylim(0, 15) +
+    theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
+
+ggsave("figures/pre_survey_edaplots/PTT_FGT_Q4.2.png")
+
+pre_survey %>%
+  mutate(Q4.3 = factor(Q4.3, levels_barchart)) %>%
+    ggplot(aes(x = Q4.3, fill = Q4.3)) +
+    geom_bar() +
+    scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+    scale_fill_manual("legend", values = colors_barchart) +
+    labs(title= "Faith in general technology Q4.3", x = "Q4.3", y = "Count") +
+    theme_minimal() +
+    theme(legend.position = "none") + 
+    ylim(0, 15) +
+    theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
+
+ggsave("figures/pre_survey_edaplots/PTT_FGT_Q4.3.png")
+
+pre_survey %>%
+  mutate(Q4.4 = factor(Q4.4, levels_barchart)) %>%
+    ggplot(aes(x = Q4.4, fill = Q4.4)) +
+    geom_bar() +
+    scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+    scale_fill_manual("legend", values = colors_barchart) +
+    labs(title= "Faith in general technology Q4.4", x = "Q4.4", y = "Count") +
+    theme_minimal() +
+    theme(legend.position = "none") + 
+    ylim(0, 15) +
+    theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
+
+ggsave("figures/pre_survey_edaplots/PTT_FGT_Q4.4.png")
+
+pre_survey %>%
+  mutate(Q4.5 = factor(Q4.5, levels_barchart)) %>%
+    ggplot(aes(x = Q4.5, fill = Q4.5)) +
+    geom_bar() +
+    scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+    scale_fill_manual("legend", values = colors_barchart) +
+    labs(title= "Faith in general technology Q4.5", x = "Q4.5", y = "Count") +
+    theme_minimal() +
+    theme(legend.position = "none") + 
+    ylim(0, 15) +
+    theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
+
+ggsave("figures/pre_survey_edaplots/PTT_FGT_Q4.5.png")
+
+#Trusting stance Q5.2 - Q5.4
+
+pre_survey %>%
+  mutate(Q5.2 = factor(Q5.2, levels_barchart)) %>%
+  ggplot(aes(x = Q5.2, fill = Q5.2)) +
   geom_bar() +
-  scale_fill_brewer(palette = "Set2") +
-  #labs(title= "Education distribution", x = "Highest level of education", y = "Count") +
+  scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+  scale_fill_manual("legend", values = colors_barchart) +
+  labs(title= "Trusting stance Q5.2", x = "Q5.2", y = "Count") +
   theme_minimal() +
-  theme(legend.position = "none")
+  theme(legend.position = "none") + 
+  ylim(0, 15) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
 
+ggsave("figures/pre_survey_edaplots/PTT_TS_Q5.2.png")
 
+pre_survey %>%
+  mutate(Q5.3 = factor(Q5.3, levels_barchart)) %>%
+  ggplot(aes(x = Q5.3, fill = Q5.3)) +
+  geom_bar() +
+  scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+  scale_fill_manual("legend", values = colors_barchart) +
+  labs(title= "Trusting stance Q5.3", x = "Q5.3", y = "Count") +
+  theme_minimal() +
+  theme(legend.position = "none") + 
+  ylim(0, 15) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
 
+ggsave("figures/pre_survey_edaplots/PTT_TS_Q5.3.png")
+
+pre_survey %>%
+  mutate(Q5.4 = factor(Q5.4, levels_barchart)) %>%
+  ggplot(aes(x = Q5.4, fill = Q5.4)) +
+  geom_bar() +
+  scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+  scale_fill_manual("legend", values = colors_barchart) +
+  labs(title= "Trusting stance Q5.4", x = "Q5.4", y = "Count") +
+  theme_minimal() +
+  theme(legend.position = "none") + 
+  ylim(0, 15) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
+
+ggsave("figures/pre_survey_edaplots/PTT_TS_Q5.4.png")
 
 ## Experiment rounds ------------
 summary(experiment_rounds)
@@ -102,6 +198,100 @@ summary(experiment_round_A)
 summary(experiment_round_B)
 summary(experiment_round_C)
 
+
+#Trust in specific technology Q3.2 - Q3.7
+#Reliability and functionality
+
+experiment_rounds %>%
+  mutate(Q3.2 = factor(Q3.2, levels = levels_barchart)) %>%
+    ggplot(aes(x = Q3.2, fill = Q3.2)) +
+    geom_bar() +
+    scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+    scale_fill_manual("legend", values = colors_barchart) +
+    labs(title= "Trust in specific technology Q3.2 Rel1", x = "Q3.2", y = "Count") +
+    theme_minimal() +
+    theme(legend.position = "none") + 
+    ylim(0, 10) +
+    theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)) +
+      facet_wrap(~Condition)
+
+ggsave("figures/exp_rounds_edaplots/TST_Q3.2_Rel1.png")
+
+experiment_rounds %>%
+  mutate(Q3.3 = factor(Q3.3, levels = levels_barchart)) %>%
+    ggplot(aes(x = Q3.3, fill = Q3.3)) +
+    geom_bar() +
+    scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+    scale_fill_manual("legend", values = colors_barchart) +
+    labs(title= "Trust in specific technology Q3.3 Rel2", x = "Q3.3", y = "Count") +
+    theme_minimal() +
+    theme(legend.position = "none") + 
+    ylim(0, 10) +
+    theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)) +
+      facet_wrap(~Condition)
+
+ggsave("figures/exp_rounds_edaplots/TST_Q3.3_Rel2.png")
+
+experiment_rounds %>%
+  mutate(Q3.4 = factor(Q3.4, levels = levels_barchart)) %>%
+  ggplot(aes(x = Q3.4, fill = Q3.4)) +
+  geom_bar() +
+  scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+  scale_fill_manual("legend", values = colors_barchart) +
+  labs(title= "Trust in specific technology Q3.4 Rel4", x = "Q3.3", y = "Count") +
+  theme_minimal() +
+  theme(legend.position = "none") + 
+  ylim(0, 10) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)) +
+    facet_wrap(~Condition)
+
+ggsave("figures/exp_rounds_edaplots/TST_Q3.4_Rel4.png")
+
+experiment_rounds %>%
+  mutate(Q3.5 = factor(Q3.5, levels = levels_barchart)) %>%
+  ggplot(aes(x = Q3.5, fill = Q3.5)) +
+  geom_bar() +
+  scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+  scale_fill_manual("legend", values = colors_barchart) +
+  labs(title= "Trust in specific technology Q3.5 Func1", x = "Q3.5", y = "Count") +
+  theme_minimal() +
+  ylim(0, 10) +
+  theme(legend.position = "none") + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)) +
+    facet_wrap(~Condition)
+
+ggsave("figures/exp_rounds_edaplots/TST_Q3.5_Func1.png")
+
+experiment_rounds %>%
+  mutate(Q3.6 = factor(Q3.6, levels = levels_barchart)) %>%
+  ggplot(aes(x = Q3.6, fill = Q3.6)) +
+  geom_bar() +
+  scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+  scale_fill_manual("legend", values = colors_barchart) +
+  labs(title= "Trust in specific technology Q3.6 Func2", x = "Q3.6", y = "Count") +
+  theme_minimal() +
+  ylim(0, 10) +
+  theme(legend.position = "none") + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)) +
+    facet_wrap(~Condition)
+
+ggsave("figures/exp_rounds_edaplots/TST_Q3.6_Func2.png")
+
+experiment_rounds %>%
+  mutate(Q3.7 = factor(Q3.7, levels = levels_barchart)) %>%
+  ggplot(aes(x = Q3.7, fill = Q3.7)) +
+  geom_bar() +
+  scale_x_discrete(labels = labels_barchart, drop = FALSE) +
+  scale_fill_manual("legend", values = colors_barchart) +
+  labs(title= "Trust in specific technology Q3.7 Func3", x = "Q3.7", y = "Count") +
+  theme_minimal() +
+  ylim(0, 10) +
+  theme(legend.position = "none") + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)) +
+    facet_wrap(~Condition)
+
+ggsave("figures/exp_rounds_edaplots/TST_Q3.7_Func3.png")
+
 ## Post-survey ------------
 summary(post_survey)
 
@@ -124,3 +314,16 @@ ggplot(post_survey, aes(x = Q4.6, fill = Q4.6)) +
   theme_minimal() + 
   ylim(0, 8) +
   theme(legend.position = "none")
+
+ggsave("figures/post_survey_edaplots/version_pref.png")
+
+#Q5.1 Willingness to donate again
+ggplot(post_survey, aes(x = Q5.1, fill = Q5.1)) +
+  geom_bar() +
+  scale_x_discrete(drop = FALSE) +
+  labs(title = "Willingness to donate again", x = "", y = "Count") +
+  theme_minimal() + 
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
+
+ggsave("figures/post_survey_edaplots/willingness_donate_again.png")
