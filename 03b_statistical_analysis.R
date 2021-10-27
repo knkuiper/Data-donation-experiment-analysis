@@ -10,6 +10,7 @@ library(ggpubr)
 library(viridis)
 library(car)
 library(rstatix)
+library(ARTool)
 
 ## Load data
 pre_survey <- read_csv("data/Clean_data/pre_survey.csv")
@@ -21,72 +22,48 @@ post_survey <- read_csv("data/Clean_data/post_survey.csv")
 complete_data <- read_csv("data/Clean_data/complete_data.csv")
 
 
+
 ########################################################################
 # H1 Trust
 ########################################################################
 
 
-
-
-
 ###Pre-survey
-#Propensity to trust (PTT)
+#Propensity to trust (PTT) - FiGT + TS
+pre_survey <- pre_survey %>%
+  mutate(sumPTT = rowSums(select(., 5:11)), meanPTT = rowMeans(select(., 5:11))) %>%  #, sdFiGT = rowMads(select(5:8)))
+  relocate(sumPTT, .after = Q5.4_pre) %>%
+  relocate(meanPTT, .after = sumPTT) %>%
+  select(-sumPTT)
 
 #Faith in general technology Q4.2 - Q4.5
-pre_survey %>%
-  select(5:8) %>%
-  mutate(SumFGT = rowSums(.), MeanFGT = rowMeans(.))
+pre_survey <- pre_survey %>%
+  mutate(sumFiGT = rowSums(select(., 5:8)), meanFiGT = rowMeans(select(., 5:8))) %>%  #, sdFiGT = rowMads(select(5:8)))
+  relocate(sumFiGT, .after = Q4.5_pre) %>%
+  relocate(meanFiGT, .after = sumFiGT) %>%
+  select(-sumFiGT)
 
 #Trusting stance Q5.2 - Q5.4
-pre_survey %>%
-  select(9:11) %>%
-  mutate(SumTST = rowSums(.), MeanTST = rowMeans(.))
+pre_survey <- pre_survey %>%
+  mutate(sumTS = rowSums(select(., 11:13)), meanTS = rowMeans(select(., 11:13))) %>%
+  relocate(sumTS, .after = Q5.4_pre) %>%
+  relocate(meanTS, .after = sumTS) %>%
+  select(-sumTS)
+
+
 
 ###Experiment rounds
+
+
 #Reliability and functionality
 #Trust in specific technology Q3.2 - Q3.7
-experiment_rounds %>%
-  select(6:11) %>%
-  mutate(SumTST = rowSums(.), MeanTST = rowMeans(.))
+experiment_rounds <- experiment_rounds %>%
+  mutate(sumTiST = rowSums(select(., 6:11)), meanTiST = rowMeans(select(., 6:11))) %>%
+  relocate(sumTiST, .after = Q3.7) %>%
+  relocate(meanTiST, .after = sumTiST) %>%
+  select(-sumTiST)
 
 
-
-aggregate(Q3.2 ~ Condition, 
-          data = experiment_rounds,
-          function(x) round(c(mean = mean(x), sd = sd(x)), 2)
-)
-
-aggregate(Q3.3 ~ Condition, 
-          data = experiment_rounds,
-          function(x) round(c(mean = mean(x), sd = sd(x)), 2)
-)
-
-aggregate(Q3.4 ~ Condition, 
-          data = experiment_rounds,
-          function(x) round(c(mean = mean(x), sd = sd(x)), 2)
-)
-
-aggregate(Q3.5 ~ Condition, 
-          data = experiment_rounds,
-          function(x) round(c(mean = mean(x), sd = sd(x)), 2)
-)
-
-aggregate(Q3.6 ~ Condition, 
-          data = experiment_rounds,
-          function(x) round(c(mean = mean(x), sd = sd(x)), 2)
-)
-
-aggregate(Q3.7 ~ Condition, 
-          data = experiment_rounds,
-          function(x) round(c(mean = mean(x), sd = sd(x)), 2)
-)
-
-
-#Scale data
-#PCA
-#Friedman test
-
-#normality
 
 
 
@@ -97,7 +74,7 @@ aggregate(Q3.7 ~ Condition,
 ########################################################################
 
 willingness_level <- experiment_rounds %>%
-  dplyr::select(3, 12, 13)
+  dplyr::select(2, 11, 13)
 
 #Willingness per condition boxplot
 ggplot(willingness_level, aes(x = Condition, y = Q2.2_1, fill = Condition)) +
