@@ -24,7 +24,7 @@ complete_data <- read_csv("data/Clean_data/complete_data.csv")
 quantitative_data <- complete_data %>%
   select(-Q2.3_condA, -Q2.3_condB, -Q2.3_condC, -Q4.7_post, -Q4.8_post, -Q4.9_post, -Q5.1_post, -Q5.2_post, -Q5.3_post)
 
-####### Trust calculations ------------
+####### Trust calculations ------------------------------------------------------------
 # Propensity to Trust # Faith in general technology # Trusting stance
 ###Pre-survey and complete data set
 
@@ -40,8 +40,7 @@ pre_survey <- pre_survey %>%
   relocate(sumPTT, .before = Group) %>%
   relocate(meanPTT, .before = Group) %>% #relocate(sumFiGT, .after = ) %>%
   relocate(meanFiGT, .after = Q4.5_pre) %>% 
-  relocate(meanTS, .after = Q5.4_pre) #relocate(sumTS, .after = meanTS) %>%
-  # %>% select(-sumTS, -sumFiGT, -sumPTT)
+  relocate(meanTS, .after = Q5.4_pre) #relocate(sumTS, .after = meanTS) %>% # %>% select(-sumTS, -sumFiGT, -sumPTT)
   
 ## Complete dataset
 quantitative_data <- quantitative_data %>%
@@ -51,37 +50,17 @@ quantitative_data <- quantitative_data %>%
   relocate(sumPTT, .after = Q5.4_pre) %>%
   relocate(meanPTT, .after = sumPTT) %>% #relocate(sumFiGT, .after = Q4.5_pre) %>%
   relocate(meanFiGT, .after = Q4.5_pre) %>% #relocate(sumTS, .after = Q5.4_pre) %>%
-  relocate(meanTS, .after = Q5.4_pre)
-  # %>% select(-sumFiGT, -sumTS, -sumPTT)
+  relocate(meanTS, .after = Q5.4_pre) # %>% select(-sumFiGT, -sumTS, -sumPTT)
 
-########################################################################
+####### Hypothesis 1 ---------------------------------------------------
+### H1 Trust in system, controlling for PTT ------
 
-# H1 Trust in system
-# controlling for PTT
-
-########################################################################
-
-###Experiment rounds
-#Reliability and functionality
-#Trust in specific technology Q3.2 - Q3.7
-
+# Reliability and functionality #Trust in specific technology Q3.2 - Q3.7
 experiment_rounds <- experiment_rounds %>%
   mutate(sumTiST = rowSums(select(., 6:11)), meanTiST = rowMeans(select(., 6:11))) %>%
   relocate(sumTiST, .after = Q3.7) %>%
   relocate(meanTiST, .after = sumTiST) # %>% select(-sumTiST)
 
-#per condition in quantitative data set (complete data)
-# quantitative_data <- quantitative_data %>%
-#   mutate(sumTiST_condA = rowSums(select(., 20:25)), meanTiST_condA = rowMeans(select(., 20:25))) %>%
-#   mutate(sumTiST_condB = rowSums(select(., 30:35)), meanTiST_condB = rowMeans(select(., 30:35))) %>%
-#   mutate(sumTiST_condC = rowSums(select(., 40:45)), meanTiST_condC = rowMeans(select(., 40:45))) %>%
-#   relocate(sumTiST_condA, .after = Q3.7_condA) %>%
-#   relocate(sumTiST_condB, .after = Q3.7_condB) %>%
-#   relocate(sumTiST_condC, .after = Q3.7_condC) %>%
-#   relocate(meanTiST_condA, .after = sumTiST_condA) %>%
-#   relocate(meanTiST_condB, .after = sumTiST_condB) %>% 
-#   relocate(meanTiST_condC, .after = sumTiST_condC) # %>% select(-sumTiST_condA, -sumTiST_condB, -sumTiST_condC)
-  
 ptt_df <- pre_survey %>%
   dplyr::select(ParticipantID, sumPTT, meanPTT)
 
@@ -92,13 +71,13 @@ h1_df <- ptt_df %>% full_join(h1_df)
 
 h1_df <- drop_na(h1_df)
 
-#plot of the trust in system per condition
+#### H1 Plot ----
 ggplot(h1_df, aes(x = Condition, y = meanTiST, fill = Condition)) +
   geom_boxplot() +
   ylim(0, 7) +
   theme_minimal()
 
-# descriptive statistics 
+#### H1 Descriptive statistics  ----
 aggregate(meanTiST ~ Condition, 
           data = h1_df,
           function(x) round(c(mean = mean(x), sd = sd(x)), 2)
@@ -108,7 +87,7 @@ aggregate(meanTiST ~ Condition,
 # 2 Condition B          5.38        0.83
 # 3 Condition C          5.32        0.77
 
-#ART analysis
+#### H1 ART analysis ----
 h1_df.art = art(meanTiST ~ factor(meanPTT)*factor(Condition) + (1|ParticipantID), data = h1_df)
 anova(h1_df.art)
 
@@ -125,7 +104,7 @@ anova(h1_df.art)
 #   ---
 #   Signif. codes:   0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 
-#normality
+#### H1 Normality ----
 shapiro.test(residuals(h1_df.art))
 # Shapiro-Wilk normality test
 # 
@@ -134,13 +113,9 @@ shapiro.test(residuals(h1_df.art))
 qqnorm(residuals(h1_df.art)); qqline(residuals(h1_df.art))
 
 
-########################################################################
-
-# H2 Willingness (maximize consent)
+####### Hypothesis 2 ---------------------------------------------------
+### H2 Willingness (maximize consent), controlling for PTT ------
 # Q2.2_1 in experiment rounds
-# controlling for PTT
-
-########################################################################
 
 h2_df <- experiment_rounds %>%
   select(ParticipantID, Q2.2_1, Condition)
@@ -149,13 +124,14 @@ h2_df <- ptt_df %>% full_join(h2_df)
 
 h2_df <- drop_na(h2_df)
 
+#### H2 plot ----
 #scale is 1-9
 ggplot(h2_df, aes(x = Condition, y = Q2.2_1, fill = Condition)) +
   geom_boxplot() +
   ylim(0, 9.5) +
   theme_minimal()
 
-# descriptive statistics 
+#### H2 descriptive statistics ----
 aggregate(Q2.2_1 ~ Condition, 
           data = h2_df,
           function(x) round(c(mean = mean(x), sd = sd(x)), 2)
@@ -165,7 +141,7 @@ aggregate(Q2.2_1 ~ Condition,
 # 2 Condition B        7.59      1.53
 # 3 Condition C        7.62      1.36
 
-#ART
+#### H2 ART analysis -----
 h2_df.art = art(Q2.2_1 ~ factor(meanPTT)*factor(Condition) + (1|ParticipantID), data = h2_df)
 anova(h2_df.art)
 
@@ -182,6 +158,7 @@ anova(h2_df.art)
 #   ---
 #   Signif. codes:   0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1  
 
+#### H2 Normality -----
 shapiro.test(residuals(h2_df.art))
 # Shapiro-Wilk normality test
 # 
@@ -190,18 +167,13 @@ shapiro.test(residuals(h2_df.art))
 qqnorm(residuals(h2_df.art)); qqline(residuals(h2_df.art))
 
 
-########################################################################
+####### Hypothesis 3 ----------------------------------------------------
+### H3 Confidence in donation, controlling for PTT ----
 
-# H3 Confidence in donation
-# controlling for PTT
-
-#Q4.3_1 How confident did you feel about donating data for version 1? - Version 1
-#Q4.4_1 How confident did you feel about donating data for version 1? - Version 2
-#Q4.5_1 How confident did you feel about donating data for version 1? - Version 3
-
-#Q4.6 Which version made you feel the most confident about giving consent to donate data to the research study?
-
-########################################################################
+# Q4.3_1 How confident did you feel about donating data for version 1? - Version 1
+# Q4.4_1 How confident did you feel about donating data for version 1? - Version 2
+# Q4.5_1 How confident did you feel about donating data for version 1? - Version 3
+# Q4.6 Which version made you feel the most confident about giving consent to donate data to the research study?
 
 conf_conditionA <- post_survey %>%
   select(1,2) %>%
@@ -224,6 +196,7 @@ h3_df <- ptt_df %>% full_join(h3_df)
 
 h3_df <- drop_na(h3_df)
 
+#### H3 plot -----
 # scale 1-10
 ggplot(h3_df, aes(x = Condition, y = Confidence_level, fill = Condition)) +
   geom_boxplot() +
@@ -231,7 +204,7 @@ ggplot(h3_df, aes(x = Condition, y = Confidence_level, fill = Condition)) +
   theme_minimal()
 #remove outliers?
 
-# descriptive statistics 
+#### H3 descriptive statistics -----
 aggregate(Confidence_level ~ Condition,
           data = h3_df,
           function(x) round(c(mean = mean(x), sd = sd(x)), 2)
@@ -241,7 +214,7 @@ aggregate(Confidence_level ~ Condition,
 # 2 Condition B                  7.45                2.06
 # 3 Condition C                  7.65                1.42
 
-#ART
+#### H3 ART analysis  -----
 h3_df.art = art(Confidence_level ~ factor(meanPTT)*factor(Condition) + (1|ParticipantID), data = h3_df)
 anova(h3_df.art)
 # Analysis of Variance of Aligned Rank Transformed Data
@@ -257,8 +230,7 @@ anova(h3_df.art)
 # ---
 #   Signif. codes:   0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 
-
-#Normality
+#### H3 Normality -----
 shapiro.test(residuals(h3_df.art))
 # Shapiro-Wilk normality test
 # 
