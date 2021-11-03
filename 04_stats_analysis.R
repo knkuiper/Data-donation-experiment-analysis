@@ -77,6 +77,8 @@ ggplot(h1_df, aes(x = Condition, y = meanTiST, fill = Condition)) +
   ylim(0, 7) +
   theme_minimal()
 
+#ggsave("figures/statplots/h1_plot.png")
+
 #### H1 Descriptive statistics  ----
 aggregate(meanTiST ~ Condition, 
           data = h1_df,
@@ -130,6 +132,8 @@ ggplot(h2_df, aes(x = Condition, y = Q2.2_1, fill = Condition)) +
   geom_boxplot() +
   ylim(0, 9.5) +
   theme_minimal()
+
+#ggsave("figures/statplots/h2_plot.png")
 
 #### H2 descriptive statistics ----
 aggregate(Q2.2_1 ~ Condition, 
@@ -203,6 +207,8 @@ ggplot(h3_df, aes(x = Condition, y = Confidence_level, fill = Condition)) +
   ylim(0, 10) +
   theme_minimal()
 #remove outliers?
+
+#ggsave("figures/statplots/h3_plot.png")
 
 #### H3 descriptive statistics -----
 aggregate(Confidence_level ~ Condition,
