@@ -19,7 +19,7 @@ excluded <- list(91093, 81153, 30358, 54779, 37020, 95171, 10493, 63781, 24724,
 nonresponse <- list(81921, 46588, 72432, 93615, 98612, 82350, 59668, 63680, 35211, 88229, 
                     94747, 48150, 85706, 53568, 15561, 98399, 25718, 32307, 51944, 33926)
 
-partial_na <- list(12622)
+partial_na <- list(12622, 67484)
 
 pre_survey <- pre_survey %>% 
   slice(-1) %>%
@@ -53,11 +53,12 @@ pre_survey <- pre_survey %>%
   rename(ParticipantID = ParticipantID_pre, Group = Group_pre)
 
 # write out new datafile
-write_csv(pre_survey_filtered, file="data/Clean_data/pre_survey.csv")
+# saved 02.11.21
+## write_csv(pre_survey, file="data/Clean_data/pre_survey.csv")
 
 ## Experiment rounds data -----------------------------------------------
 
-participants_groups <- pre_survey_filtered %>%
+participants_groups <- pre_survey %>%
   dplyr::select(1, 12)
 
 ### Binding dataframes
@@ -69,7 +70,7 @@ participants_groups <- pre_survey_filtered %>%
 
 alfa_r1 <- read_excel("data/Data donation experiment round 1 Alfa.xlsx")
 
-alfa_r1_filtered <- alfa_r1 %>% 
+alfa_r1_exp <- alfa_r1 %>% 
   slice(-1) %>%
   dplyr::select(19:29) %>%
   mutate(Round = "Round1",
@@ -94,7 +95,7 @@ alfa_r1_filtered <- alfa_r1 %>%
 
 alfa_r2 <- read_excel("data/Data donation experiment round 2 Alfa.xlsx")
 
-alfa_r2_filtered <- alfa_r2 %>% 
+alfa_r2_exp <- alfa_r2 %>% 
   slice(-1) %>%
   dplyr::select(19:29) %>%
   mutate(Round = "Round2",
@@ -119,7 +120,7 @@ alfa_r2_filtered <- alfa_r2 %>%
 
 alfa_r3 <- read_excel("data/Data donation experiment round 3 Alfa + post survey.xlsx")
 
-alfa_r3_filtered <- alfa_r3 %>% 
+alfa_r3_exp <- alfa_r3 %>% 
   slice(-1) %>%
   dplyr::select(19:28, 39) %>%
   mutate(Round = "Round3",
@@ -142,7 +143,7 @@ alfa_r3_filtered <- alfa_r3 %>%
                        "Strongly disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4,
                        "Somewhat agree" = 5, "Agree" = 6, "Strongly agree" = 7))
 
-alfa_compl <- bind_rows(alfa_r1_filtered, alfa_r2_filtered, alfa_r3_filtered)
+alfa_compl <- bind_rows(alfa_r1_exp, alfa_r2_exp, alfa_r3_exp)
 
 alfa_compl <- alfa_compl %>%
   mutate(Condition = "Condition A") %>%
@@ -151,19 +152,22 @@ alfa_compl <- alfa_compl %>%
 alfa_compl <- alfa_compl %>%
   inner_join(participants_groups)
 
-alfa_compl_app <- alfa_compl %>%
+alfa_cond <- alfa_compl
+
+alfa_compl <- alfa_compl %>%
+  dplyr::select(-Condition) %>%
   setNames(paste0(names(.), "_condA")) %>%
-  select(-Condition_condA) %>%
-  rename(ParticipantID = ParticipantID_condA, Group = Group_condA)
+  dplyr::rename(ParticipantID = ParticipantID_condA, Group = Group_condA)
 
 # write out new datafile
-write_csv(alfa_compl_app, file="data/Clean_data/conditionA.csv")
+# saved 02.11.21
+# write_csv(alfa_compl, file="data/Clean_data/conditionA.csv")
 
 ### BETA -------------------------------------------------------------------
 
 beta_r1 <- read_excel("data/Data donation experiment round 1 Beta.xlsx")
 
-beta_r1_filtered <- beta_r1 %>% 
+beta_r1_exp <- beta_r1 %>% 
   slice(-1) %>%
   dplyr::select(19:29) %>%
   mutate(Round = "Round1",
@@ -188,7 +192,7 @@ beta_r1_filtered <- beta_r1 %>%
 
 beta_r2 <- read_excel("data/Data donation experiment round 2 Beta.xlsx")
 
-beta_r2_filtered <- beta_r2 %>% 
+beta_r2_exp <- beta_r2 %>% 
   slice(-1) %>%
   dplyr::select(19:29) %>%
   mutate(Round = "Round2",
@@ -213,7 +217,7 @@ beta_r2_filtered <- beta_r2 %>%
 
 beta_r3 <- read_excel("data/Data donation experiment round 3 Beta + post survey.xlsx")
 
-beta_r3_filtered <- beta_r3 %>% 
+beta_r3_exp <- beta_r3 %>% 
   slice(-1) %>%
   dplyr::select(19:28, 39) %>%
   mutate(Round = "Round3",
@@ -236,28 +240,31 @@ beta_r3_filtered <- beta_r3 %>%
                        "Strongly disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4,
                        "Somewhat agree" = 5, "Agree" = 6, "Strongly agree" = 7))
 
-beta_compl <- bind_rows(beta_r1_filtered, beta_r2_filtered, beta_r3_filtered)
+beta_compl <- bind_rows(beta_r1_exp, beta_r2_exp, beta_r3_exp)
 
 beta_compl <- beta_compl %>%
   mutate(Condition = "Condition B") %>%
-  relocate(ParticipantID)
+  relocate(ParticipantID) 
 
 beta_compl <- beta_compl %>%
   inner_join(participants_groups)
 
-beta_compl_app <- beta_compl %>%
+beta_cond <- beta_compl
+
+beta_compl <- beta_compl %>%
+  dplyr::select(-Condition) %>%
   setNames(paste0(names(.), "_condB")) %>%
-  select(-Condition_condB) %>%
   rename(ParticipantID = ParticipantID_condB, Group = Group_condB)
 
 # write out new datafile
-write_csv(beta_compl_app, file="data/Clean_data/conditionB.csv")
+# saved 02.11.21
+# write_csv(beta_compl, file="data/Clean_data/conditionB.csv")
 
 ### GAMMA -------------------------------------------------------------------
 
 gamma_r1 <- read_excel("data/Data donation experiment round 1 Gamma.xlsx")
 
-gamma_r1_filtered <- gamma_r1 %>% 
+gamma_r1_exp <- gamma_r1 %>% 
   slice(-1) %>%
   dplyr::select(19:29) %>%
   mutate(Round = "Round1",
@@ -282,7 +289,7 @@ gamma_r1_filtered <- gamma_r1 %>%
 
 gamma_r2 <- read_excel("data/Data donation experiment round 2 Gamma.xlsx")
 
-gamma_r2_filtered <- gamma_r2 %>% 
+gamma_r2_exp <- gamma_r2 %>% 
   slice(-1) %>%
   dplyr::select(19:29) %>%
   mutate(Round = "Round2",
@@ -307,7 +314,7 @@ gamma_r2_filtered <- gamma_r2 %>%
 
 gamma_r3 <- read_excel("data/Data donation experiment round 3 Gamma + post survey.xlsx")
 
-gamma_r3_filtered <- gamma_r3 %>% 
+gamma_r3_exp <- gamma_r3 %>% 
   slice(-1) %>%
   dplyr::select(19:28, 39) %>%
   mutate(Round = "Round3",
@@ -330,7 +337,7 @@ gamma_r3_filtered <- gamma_r3 %>%
                        "Strongly disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4,
                        "Somewhat agree" = 5, "Agree" = 6, "Strongly agree" = 7))
 
-gamma_compl <- bind_rows(gamma_r1_filtered, gamma_r2_filtered, gamma_r3_filtered)
+gamma_compl <- bind_rows(gamma_r1_exp, gamma_r2_exp, gamma_r3_exp)
 
 gamma_compl <- gamma_compl %>%
   mutate(Condition = "Condition C") %>%
@@ -339,27 +346,32 @@ gamma_compl <- gamma_compl %>%
 gamma_compl <- gamma_compl %>%
   inner_join(participants_groups)
 
-gamma_compl_app <- gamma_compl %>%
+gamma_cond <- gamma_compl
+
+gamma_compl <- gamma_compl %>%
+  dplyr::select(-Condition) %>%
   setNames(paste0(names(.), "_condC")) %>%
-  select(-Condition_condC) %>%
   rename(ParticipantID = ParticipantID_condC, Group = Group_condC)
 
 # write out new datafile
-write_csv(gamma_compl_app, file="data/Clean_data/conditionC.csv")
+# saved 02.11.21
+# write_csv(gamma_compl, file="data/Clean_data/conditionC.csv")
 
 ### ALL DATA (every COND + ROUNDS) ------------------------------------------
 
-binded_conditions <- bind_rows(alfa_compl, beta_compl, gamma_compl)
+binded_conditions <- bind_rows(alfa_cond, beta_cond, gamma_cond)
 
 # write out new datafile for all conditions
-write_csv(binded_conditions, file="data/Clean_data/binded_conditions.csv")
+# saved 02.11.21
+# write_csv(binded_conditions, file="data/Clean_data/binded_conditions.csv")
 
-joined_conditions <- beta_compl_app %>%
-  left_join(alfa_compl_app) %>%
-  left_join(gamma_compl_app)
+joined_conditions <- beta_compl %>%
+  full_join(alfa_compl) %>%
+  full_join(gamma_compl)
 
 # write out new datafile for all conditions
-write_csv(joined_conditions, file="data/Clean_data/joined_conditions.csv")
+# saved 02.11.21
+# write_csv(joined_conditions, file="data/Clean_data/joined_conditions.csv")
 
 ## POST Survey data ---------------------------------------------------------
 # filter and clean only post data
@@ -392,17 +404,22 @@ post_survey <- post_survey %>%
   rename(ParticipantID = ParticipantID_post, Group = Group_post)
 
 # write out new datafile for post survey
-write_csv(post_survey, file="data/Clean_data/post_survey.csv")
-
+# saved 02.11.21
+# write_csv(post_survey, file="data/Clean_data/post_survey.csv")
 
 ## Complete experiment data -------------------------------------------------
 
 complete_data <- pre_survey %>%
-  left_join(joined_conditions) %>%
-  left_join(post_survey)
+  full_join(joined_conditions) %>%
+  full_join(post_survey)
+
+complete_data <- complete_data %>%
+  relocate(Group, .after = ParticipantID) %>%
+  relocate(Q2.1_condA, Q2.2_1_condA, Q2.3_condA, Q2.4_condA, Q3.2_condA, Q3.3_condA, Q3.4_condA, Q3.5_condA, Q3.6_condA, Q3.7_condA, Round_condA, .before = Q2.1_condB)
 
 # write out new datafile for all conditions
-write_csv(complete_data, file="data/Clean_data/complete_data.csv")
+# saved 02.11.21
+# write_csv(complete_data, file="data/Clean_data/complete_data.csv")
 
 # Functions -----------------------------------------------------------------
 
@@ -415,9 +432,9 @@ write_csv(complete_data, file="data/Clean_data/complete_data.csv")
 #         dplyr::select(18:29)
 # }
 # 
-# filter_survey(alfa_r1_filtered, alfa_r1)
+# filter_survey(alfa_r1, alfa_r1)
 # 
-# alfa_r1_filtered <- alfa_r1 %>% 
+# alfa_r1 <- alfa_r1 %>% 
 #   slice(-1) %>%
 #     dplyr::select(18:29)
 # 
