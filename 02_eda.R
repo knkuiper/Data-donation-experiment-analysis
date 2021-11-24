@@ -18,7 +18,7 @@ experiment_rounds <- read_csv("data/Clean_data/binded_conditions.csv")
 post_survey <- read_csv("data/Clean_data/post_survey.csv")
 complete_data <- read_csv("data/Clean_data/complete_data.csv")
 
-
+# colors and levels for plotting
 levels_barchart = c("1", "2", "3", "4", "5", "6", "7")
 colors_barchart = c("1" = "#E69F00", "2" = "#56B4E9", "3" = "#009E73", "4" = "#F0E442", "5" = "#0072B2", "6" = "#D55E00", "7" = "#CC79A7", "NA" = "#999999")
 labels_barchart = c("Strongly disagree", "Disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Agree", "Strongly agree")
@@ -38,6 +38,7 @@ summary(pre_survey)
 mean(complete_data$Q3.2_pre)
 max(complete_data$Q3.2_pre)
 min(complete_data$Q3.2_pre)
+sd(complete_data$Q3.2_pre)
 ## Mean age: 33.04167
 ## Max 66, Min 24
 
@@ -49,150 +50,145 @@ ggplot(complete_data, aes(x = Q3.2_pre, fill = Q3.1_pre)) +
   theme(legend.position = "none")
 
 # saved 02.11.21
-# ggsave("figures/age_dist.png")
+# ggsave("figures/age_dist.png", width = 9, height = 9, bg = "white")
 
 # Gender distribution
-ggplot(pre_survey, aes(x = Q3.1_pre, fill = Q3.1_pre)) +
+ggplot(pre_survey, aes(x = Q3.1_pre, fill = Q3.1_pre)) + 
   geom_bar() +
   scale_fill_brewer(palette = "Set2") +
-  labs(title = "Gender distribution", x = "Gender", y = "Count") +
+  labs(x = "", y = "Count") + # title = "Gender distribution", x = "Gender
   theme_minimal() +
-  theme(legend.position = "none")
+  ylim(0,15) +
+  theme(legend.position = "none") +
+  theme(text = element_text(size = 20), axis.text = element_text(size = 20))
 
-# saved 02.11.21
-# ggsave("figures/gender_dist.png")
+# saved 15.11.21
+# ggsave("figures/gender_dist.png", width = 9, height = 9, bg = "white")
 
 # Education distribution
 pre_survey %>% 
   mutate(Q3.3 = factor(Q3.3_pre, levels = c("High school", "Bachelor's degree", "Master's degree", "PhD"))) %>% 
-    ggplot(aes(x = Q3.3_pre, fill = Q3.3_pre)) + 
-    geom_bar() +
+    ggplot(aes(x = Q3.3_pre)) + #, fill = Q3.3_pre 
+    geom_bar(fill = "cornflowerblue") +
     scale_x_discrete(drop = FALSE) +
     scale_fill_brewer(palette="Set2") +
-    labs(title= "Education distribution", x = "", y = "Count") + #x = "Highest level of education",
+    labs(x = "", y = "Count") + #title= "Education distribution", x = "Highest level of education",
     theme_minimal() +
-    theme(legend.position = "none")
+    ylim(0,15) +
+    theme(legend.position = "none") +
+    theme(text = element_text(size = 20), axis.text = element_text(size = 20))
 
-# saved 02.11.21
-# ggsave("figures/educ_dist.png")
+# saved 15.11.21
+# ggsave("figures/educ_dist.png", width = 9, height = 9, bg = "white")
 
 ### Propensity to trust ------------
 
 #Faith in general technology Q4.2 - Q4.5
 pre_survey %>%
   mutate(Q4.2_pre = factor(Q4.2_pre, levels_barchart)) %>%
-    ggplot(aes(x = Q4.2_pre, fill = Q4.2_pre)) +
-    geom_bar() +
+    ggplot(aes(x = Q4.2_pre)) +
+    geom_bar(fill = "cornflowerblue") +
     scale_x_discrete(labels = labels_barchart, drop = FALSE) +
-    scale_fill_manual("legend", values = colors_barchart) +
-    labs(title= "Faith in general technology Q4.2", x = "Q4.2", y = "Count") +
+    labs(title= "", x = "Faith in general technology Q4.2", y = "Count") +
     theme_minimal() +
     theme(legend.position = "none") + 
-    ylim(0, 15) +
     theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
 
-# saved 27.10.21
-# ggsave("figures/pre_survey_edaplots/PTT_FGT_Q4.2.png")
+# saved 15.11.21
+# ggsave("figures/pre_survey_edaplots/PTT_FGT_Q4.2.png", width = 9, height = 9, bg = "white")
 
 pre_survey %>%
   mutate(Q4.3_pre = factor(Q4.3_pre, levels_barchart)) %>%
-    ggplot(aes(x = Q4.3_pre, fill = Q4.3_pre)) +
-    geom_bar() +
+    ggplot(aes(x = Q4.3_pre)) +
+    geom_bar(fill = "cornflowerblue") +
     scale_x_discrete(labels = labels_barchart, drop = FALSE) +
     scale_fill_manual("legend", values = colors_barchart) +
-    labs(title= "Faith in general technology Q4.3", x = "Q4.3", y = "Count") +
+    labs(title= "", x = "Faith in general technology Q4.3", y = "Count") +
     theme_minimal() +
     theme(legend.position = "none") + 
-    ylim(0, 15) +
     theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
 
-# saved 27.10.21
-# ggsave("figures/pre_survey_edaplots/PTT_FGT_Q4.3.png")
+# saved 15.11.21
+# ggsave("figures/pre_survey_edaplots/PTT_FGT_Q4.3.png", width = 9, height = 9, bg = "white")
 
 pre_survey %>%
   mutate(Q4.4_pre = factor(Q4.4_pre, levels_barchart)) %>%
     ggplot(aes(x = Q4.4_pre, fill = Q4.4_pre)) +
-    geom_bar() +
+    geom_bar(fill = "cornflowerblue") +
     scale_x_discrete(labels = labels_barchart, drop = FALSE) +
     scale_fill_manual("legend", values = colors_barchart) +
-    labs(title= "Faith in general technology Q4.4", x = "Q4.4", y = "Count") +
+    labs(title= "", x = "Faith in general technology Q4.4", y = "Count") +
     theme_minimal() +
     theme(legend.position = "none") + 
-    ylim(0, 15) +
     theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
 
-# saved 27.10.21
-# ggsave("figures/pre_survey_edaplots/PTT_FGT_Q4.4.png")
+# saved 15.11.21
+# ggsave("figures/pre_survey_edaplots/PTT_FGT_Q4.4.png", width = 9, height = 9, bg = "white")
 
 pre_survey %>%
   mutate(Q4.5_pre = factor(Q4.5_pre, levels_barchart)) %>%
     ggplot(aes(x = Q4.5_pre, fill = Q4.5_pre)) +
-    geom_bar() +
+    geom_bar(fill = "cornflowerblue") +
     scale_x_discrete(labels = labels_barchart, drop = FALSE) +
     scale_fill_manual("legend", values = colors_barchart) +
-    labs(title= "Faith in general technology Q4.5", x = "Q4.5", y = "Count") +
+    labs(title= "", x = "Faith in general technology Q4.5", y = "Count") +
     theme_minimal() +
     theme(legend.position = "none") + 
-    ylim(0, 15) +
     theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
 
-# saved 27.10.21
-# ggsave("figures/pre_survey_edaplots/PTT_FGT_Q4.5.png")
+# saved 15.11.21
+# ggsave("figures/pre_survey_edaplots/PTT_FGT_Q4.5.png", width = 9, height = 9, bg = "white")
 
 #Trusting stance Q5.2 - Q5.4
 
 pre_survey %>%
   mutate(Q5.2_pre = factor(Q5.2_pre, levels_barchart)) %>%
-  ggplot(aes(x = Q5.2_pre, fill = Q5.2_pre)) +
-  geom_bar() +
+  ggplot(aes(x = Q5.2_pre)) +
+  geom_bar(fill = "cornflowerblue") +
   scale_x_discrete(labels = labels_barchart, drop = FALSE) +
   scale_fill_manual("legend", values = colors_barchart) +
-  labs(title= "Trusting stance Q5.2", x = "Q5.2", y = "Count") +
+  labs(title= "", x = "Trusting stance Q5.2", y = "Count") +
   theme_minimal() +
   theme(legend.position = "none") + 
-  ylim(0, 15) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
 
-# saved 27.10.21
-# ggsave("figures/pre_survey_edaplots/PTT_TS_Q5.2.png")
+# saved 15.11.21
+# ggsave("figures/pre_survey_edaplots/PTT_TS_Q5.2.png", width = 9, height = 9, bg = "white")
 
 pre_survey %>%
   mutate(Q5.3_pre = factor(Q5.3_pre, levels_barchart)) %>%
-  ggplot(aes(x = Q5.3_pre, fill = Q5.3_pre)) +
-  geom_bar() +
+  ggplot(aes(x = Q5.3_pre)) +
+  geom_bar(fill = "cornflowerblue") +
   scale_x_discrete(labels = labels_barchart, drop = FALSE) +
   scale_fill_manual("legend", values = colors_barchart) +
-  labs(title= "Trusting stance Q5.3", x = "Q5.3", y = "Count") +
+  labs(title= "", x = "Trusting stance Q5.3", y = "Count") +
   theme_minimal() +
   theme(legend.position = "none") + 
-  ylim(0, 15) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
 
-# saved 27.10.21
-# ggsave("figures/pre_survey_edaplots/PTT_TS_Q5.3.png")
+# saved 15.11.21
+# ggsave("figures/pre_survey_edaplots/PTT_TS_Q5.3.png", width = 9, height = 9, bg = "white")
 
 pre_survey %>%
   mutate(Q5.4_pre = factor(Q5.4_pre, levels_barchart)) %>%
-  ggplot(aes(x = Q5.4_pre, fill = Q5.4_pre)) +
-  geom_bar() +
+  ggplot(aes(x = Q5.4_pre)) +
+  geom_bar(fill = "cornflowerblue") +
   scale_x_discrete(labels = labels_barchart, drop = FALSE) +
   scale_fill_manual("legend", values = colors_barchart) +
-  labs(title= "Trusting stance Q5.4", x = "Q5.4", y = "Count") +
+  labs(title= "", x = "Trusting stance Q5.4", y = "Count") +
   theme_minimal() +
   theme(legend.position = "none") + 
-  ylim(0, 15) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
 
-# saved 27.10.21
-# ggsave("figures/pre_survey_edaplots/PTT_TS_Q5.4.png")
+# saved 15.11.21
+# ggsave("figures/pre_survey_edaplots/PTT_TS_Q5.4.png", width = 9, height = 9, bg = "white")
 
 ## Experiment rounds ------------
 summary(experiment_rounds)
 
 #Donation all rounds
 ggplot(experiment_rounds, aes(x = Q2.1, fill = Q2.1)) +
-  geom_bar() +
-  scale_fill_brewer(palette = "Set2") +
+  geom_bar(fill = "cornflowerblue") +
   labs(x = "Consent to donate") +
   theme_minimal() +
   theme(legend.position = "none")
@@ -229,8 +225,8 @@ donationC_plot <-
 
 plot_grid(donationA_plot, donationB_plot, donationC_plot, nrow = 1)
 
-# saved 02.11.21
-# ggsave("figures/exp_rounds_edaplots/donation.png")
+# saved 15.11.21
+# ggsave("figures/exp_rounds_edaplots/donation.png", width = 9, height = 9, bg = "white")
 
 #Willingness per condition
 aggregate(Q2.2_1 ~ Condition, 
@@ -267,7 +263,7 @@ aggregate(Q2.2_1 ~ Round,
 
 ggplot(experiment_rounds, aes(x = Round, y = Q2.2_1, fill = Round)) +
   geom_boxplot() +
-  scale_fill_brewer(palette = "Set2") +
+  scale_fill_manual(values = color_conditions) +
   ylim(0, 10) +
   labs(title = "Donation willingness per round", x = "", y = "Scale") +
   theme_minimal() +
@@ -313,96 +309,90 @@ plot_grid(willingnessA_plot, willingnessB_plot, willingnessC_plot, nrow = 1)
 
 experiment_rounds %>%
   mutate(Q3.2 = factor(Q3.2, levels = levels_barchart)) %>%
-    ggplot(aes(x = Q3.2, fill = Q3.2)) +
-    geom_bar() +
+    ggplot(aes(x = Q3.2)) +
+    geom_bar(fill = "cornflowerblue") +
     scale_x_discrete(labels = labels_barchart, drop = FALSE) +
     scale_fill_manual("legend", values = colors_barchart) +
     labs(title= "Trust in specific technology Q3.2 Rel1", x = "Q3.2", y = "Count") +
     theme_minimal() +
-    theme(legend.position = "none") + 
-    ylim(0, 10) +
-    theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)) +
-      facet_wrap(~Condition)
+    theme(legend.position = "top") + 
+    theme(axis.text.x = element_text(angle = 45, vjust = .5, hjust=.5)) +
+    facet_wrap(~Condition)
 
 # saved 27.10.21
 # ggsave("figures/exp_rounds_edaplots/TST_Q3.2_Rel1.png")
 
 experiment_rounds %>%
   mutate(Q3.3 = factor(Q3.3, levels = levels_barchart)) %>%
-    ggplot(aes(x = Q3.3, fill = Q3.3)) +
-    geom_bar() +
+    ggplot(aes(x = Q3.3)) +
+    geom_bar(fill = "cornflowerblue") +
     scale_x_discrete(labels = labels_barchart, drop = FALSE) +
     scale_fill_manual("legend", values = colors_barchart) +
     labs(title= "Trust in specific technology Q3.3 Rel2", x = "Q3.3", y = "Count") +
     theme_minimal() +
     theme(legend.position = "none") + 
-    ylim(0, 10) +
-    theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)) +
-      facet_wrap(~Condition)
+    theme(axis.text.x = element_text(angle = 45, vjust = .5, hjust=.5)) +
+    facet_wrap(~Condition)
 
 # saved 27.10.21
 # ggsave("figures/exp_rounds_edaplots/TST_Q3.3_Rel2.png")
 
 experiment_rounds %>%
   mutate(Q3.4 = factor(Q3.4, levels = levels_barchart)) %>%
-  ggplot(aes(x = Q3.4, fill = Q3.4)) +
-  geom_bar() +
+  ggplot(aes(x = Q3.4)) +
+  geom_bar(fill = "cornflowerblue") +
   scale_x_discrete(labels = labels_barchart, drop = FALSE) +
   scale_fill_manual("legend", values = colors_barchart) +
   labs(title= "Trust in specific technology Q3.4 Rel4", x = "Q3.3", y = "Count") +
   theme_minimal() +
   theme(legend.position = "none") + 
-  ylim(0, 10) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)) +
-    facet_wrap(~Condition)
+  facet_wrap(~Condition)
 
 # saved 27.10.21
 # ggsave("figures/exp_rounds_edaplots/TST_Q3.4_Rel4.png")
 
 experiment_rounds %>%
   mutate(Q3.5 = factor(Q3.5, levels = levels_barchart)) %>%
-  ggplot(aes(x = Q3.5, fill = Q3.5)) +
-  geom_bar() +
+  ggplot(aes(x = Q3.5)) +
+  geom_bar(fill = "cornflowerblue") +
   scale_x_discrete(labels = labels_barchart, drop = FALSE) +
   scale_fill_manual("legend", values = colors_barchart) +
   labs(title= "Trust in specific technology Q3.5 Func1", x = "Q3.5", y = "Count") +
   theme_minimal() +
-  ylim(0, 10) +
   theme(legend.position = "none") + 
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)) +
-    facet_wrap(~Condition)
+  facet_wrap(~Condition)
 
 # saved 27.10.21
 # ggsave("figures/exp_rounds_edaplots/TST_Q3.5_Func1.png")
 
 experiment_rounds %>%
   mutate(Q3.6 = factor(Q3.6, levels = levels_barchart)) %>%
-  ggplot(aes(x = Q3.6, fill = Q3.6)) +
-  geom_bar() +
+  ggplot(aes(x = Q3.6)) +
+  geom_bar(fill = "cornflowerblue") +
   scale_x_discrete(labels = labels_barchart, drop = FALSE) +
   scale_fill_manual("legend", values = colors_barchart) +
   labs(title= "Trust in specific technology Q3.6 Func2", x = "Q3.6", y = "Count") +
   theme_minimal() +
-  ylim(0, 10) +
   theme(legend.position = "none") + 
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)) +
-    facet_wrap(~Condition)
+  facet_wrap(~Condition)
 
 # saved 27.10.21
 # ggsave("figures/exp_rounds_edaplots/TST_Q3.6_Func2.png")
 
 experiment_rounds %>%
   mutate(Q3.7 = factor(Q3.7, levels = levels_barchart)) %>%
-  ggplot(aes(x = Q3.7, fill = Q3.7)) +
-  geom_bar() +
+  ggplot(aes(x = Q3.7)) +
+  geom_bar(fill = "cornflowerblue") +
   scale_x_discrete(labels = labels_barchart, drop = FALSE) +
   scale_fill_manual("legend", values = colors_barchart) +
   labs(title= "Trust in specific technology Q3.7 Func3", x = "Q3.7", y = "Count") +
   theme_minimal() +
-  ylim(0, 10) +
   theme(legend.position = "none") + 
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)) +
-    facet_wrap(~Condition)
+  facet_wrap(~Condition)
 
 # saved 27.10.21
 # ggsave("figures/exp_rounds_edaplots/TST_Q3.7_Func3.png")
@@ -443,25 +433,28 @@ plot_grid(box_plotA, box_plotB, box_plotC, ncol = 3)
 # ggsave("figures/post_survey_edaplots/version_conf.png")
 
 #Q4.6 Which version made you feel the most confident about giving consent to donate data to the research study?
-ggplot(post_survey, aes(x = Q4.6_post, fill = Q4.6_post)) +
-  geom_bar() +
-  scale_fill_manual(values = color_conditions_w_grey) +
-  labs(title = "Version preference", x = "", y = "Count") +
+ggplot(post_survey, aes(x = Q4.6_post)) +
+  geom_bar(fill = "cornflowerblue") +
+  #scale_fill_manual(values = color_conditions_w_grey) +
+  labs(title = "", x = "", y = "Count") +
+  scale_x_discrete(labels = c("Don't know", "Condition A", "Condition B", "Condition C"), drop = FALSE) +
   theme_minimal() + 
   ylim(0, 8) +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  theme(text = element_text(size = 17), axis.text = element_text(size = 17))
 
-# saved 02.11.21
-# ggsave("figures/post_survey_edaplots/version_pref.png")
+# saved 15.11.21
+# ggsave("figures/post_survey_edaplots/version_pref.png", width = 9, height = 9, bg = "white")
 
 #Q5.1 Willingness to donate again
-ggplot(post_survey, aes(x = Q5.1_post, fill = Q5.1_post)) +
-  geom_bar() +
+ggplot(post_survey, aes(x = Q5.1_post)) +
+  geom_bar(fill = "cornflowerblue") +
   #scale_x_discrete(drop = FALSE) +
-  labs(title = "Willingness to donate again", x = "", y = "Count") +
+  labs(title = "", x = "", y = "Count") +
   theme_minimal() + 
   theme(legend.position = "none") +
-  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5))
+  theme(text = element_text(size = 17), axis.text = element_text(size = 17))
 
-# saved 27.10.21
-# ggsave("figures/post_survey_edaplots/willingness_donate_again.png")
+# saved 15.11.21
+# ggsave("figures/post_survey_edaplots/willingness_donate_again.png", width = 9, height = 9, bg = "white")
+

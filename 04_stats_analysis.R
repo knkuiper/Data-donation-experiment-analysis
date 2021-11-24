@@ -73,11 +73,15 @@ h1_df <- drop_na(h1_df)
 
 #### H1 Plot ----
 ggplot(h1_df, aes(x = Condition, y = meanTiST, fill = Condition)) +
-  geom_boxplot() +
+  stat_boxplot(geom ='errorbar', width = 0.2) +
+  geom_boxplot(width = 0.5) +
   ylim(0, 7) +
-  theme_minimal()
+  labs(title = "", x = "", y = "Trust in specific technology") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  theme(text = element_text(size = 17), axis.text = element_text(size = 17))
 
-#ggsave("figures/statplots/h1_plot.png")
+ggsave("figures/statplots/h1_plot.png", width = 9, height = 9, bg = "white")
 
 #### H1 Descriptive statistics  ----
 aggregate(meanTiST ~ Condition, 
@@ -89,9 +93,32 @@ aggregate(meanTiST ~ Condition,
 # 2 Condition B          5.38        0.83
 # 3 Condition C          5.32        0.77
 
-#### H1 ART analysis ----
-h1_df.art = art(meanTiST ~ factor(meanPTT)*factor(Condition) + (1|ParticipantID), data = h1_df)
-anova(h1_df.art)
+#### Test assumptions ----
+
+#Assumptions of homogeneity of variance
+levene_test(meanTiST ~ Condition, data = h1_df)
+#     df1   df2 statistic     p
+#     <int> <int>     <dbl> <dbl>
+# 1     2    59     0.189 0.829
+# variance is equal among groups
+
+
+
+#### H1 analysis ----
+
+#one way anova
+h1_df.aov <- aov(meanTiST ~ factor(meanPTT)+factor(Condition) + (1|ParticipantID), data = h1_df)
+summary(h1_df.aov)
+#                   Df Sum Sq Mean Sq F value   Pr(>F)    
+# factor(meanPTT)   12 23.819  1.9849   4.839 4.08e-05 ***
+# factor(Condition)  2  0.567  0.2834   0.691    0.506    
+# Residuals         47 19.277  0.4102                     
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+# h1_df.art = art(meanTiST ~ factor(meanPTT)*factor(Condition) + (1|ParticipantID), data = h1_df)
+# summary(h1_df.art)
+# anova(h1_df.art)
 
 # Analysis of Variance of Aligned Rank Transformed Data
 # 
@@ -106,6 +133,10 @@ anova(h1_df.art)
 #   ---
 #   Signif. codes:   0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 
+# no main effect
+# interaction effect meanPTT:Condition
+
+
 #### H1 Normality ----
 shapiro.test(residuals(h1_df.art))
 # Shapiro-Wilk normality test
@@ -113,6 +144,7 @@ shapiro.test(residuals(h1_df.art))
 # data:  residuals(h1_df.art)
 # W = 0.92171, p-value = 0.0007254
 qqnorm(residuals(h1_df.art)); qqline(residuals(h1_df.art))
+#not normal
 
 
 ####### Hypothesis 2 ---------------------------------------------------
@@ -129,11 +161,15 @@ h2_df <- drop_na(h2_df)
 #### H2 plot ----
 #scale is 1-9
 ggplot(h2_df, aes(x = Condition, y = Q2.2_1, fill = Condition)) +
-  geom_boxplot() +
-  ylim(0, 9.5) +
-  theme_minimal()
+  stat_boxplot(geom ='errorbar', width = 0.2) +
+  geom_boxplot(width = 0.5) +
+  ylim(0, 9) +
+  labs(title = "", x = "", y = "Willingness to donate") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  theme(text=element_text(size = 17), axis.text=element_text(size = 17))
 
-#ggsave("figures/statplots/h2_plot.png")
+ggsave("figures/statplots/h2_plot.png", width = 9, height = 9, bg = "white")
 
 #### H2 descriptive statistics ----
 aggregate(Q2.2_1 ~ Condition, 
@@ -145,8 +181,18 @@ aggregate(Q2.2_1 ~ Condition,
 # 2 Condition B        7.59      1.53
 # 3 Condition C        7.62      1.36
 
+#Test assumptions
+
+#Assumptions of homogeneity of variance
+levene_test(Q2.2_1 ~ Condition, data = h2_df)
+#     df1   df2 statistic     p
+#     <int> <int>     <dbl> <dbl>
+# 1     2    60    0.0648 0.937
+# variance is equal among groups
+
 #### H2 ART analysis -----
-h2_df.art = art(Q2.2_1 ~ factor(meanPTT)*factor(Condition) + (1|ParticipantID), data = h2_df)
+h2_df.art = art(Q2.2_1 ~ factor(Condition) + (1|ParticipantID), data = h2_df)
+summary(h2_df.art)
 anova(h2_df.art)
 
 # Analysis of Variance of Aligned Rank Transformed Data
@@ -155,12 +201,10 @@ anova(h2_df.art)
 # Model: Mixed Effects (lmer)
 # Response: art(Q2.2_1)
 # 
-# F Df  Df.res    Pr(>F)   
-# 1 factor(meanPTT)                   1.1107 13  8.9826 0.4487329   
-# 2 factor(Condition)                 1.0151  2 16.0241 0.3845238   
-# 3 factor(meanPTT):factor(Condition) 4.6397 22 16.0725 0.0013678 **
-#   ---
-#   Signif. codes:   0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1  
+#                           F Df Df.res  Pr(>F)  
+# 1 factor(Condition) 1.4968  2 38.773 0.23649  
+# ---
+#   Signif. codes:   0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 
 #### H2 Normality -----
 shapiro.test(residuals(h2_df.art))
@@ -203,12 +247,16 @@ h3_df <- drop_na(h3_df)
 #### H3 plot -----
 # scale 1-10
 ggplot(h3_df, aes(x = Condition, y = Confidence_level, fill = Condition)) +
-  geom_boxplot() +
+  stat_boxplot(geom ='errorbar', width = 0.2) +
+  geom_boxplot(width = 0.5) +
   ylim(0, 10) +
-  theme_minimal()
+  labs(title = "", x = "", y = "Confidence in donation") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  theme(text=element_text(size = 17), axis.text=element_text(size = 17))
 #remove outliers?
 
-#ggsave("figures/statplots/h3_plot.png")
+ggsave("figures/statplots/h3_plot.png", width = 9, height = 9, bg = "white")
 
 #### H3 descriptive statistics -----
 aggregate(Confidence_level ~ Condition,
@@ -220,9 +268,20 @@ aggregate(Confidence_level ~ Condition,
 # 2 Condition B                  7.45                2.06
 # 3 Condition C                  7.65                1.42
 
+#Test assumptions
+
+#Assumptions of homogeneity of variance
+levene_test(Confidence_level ~ Condition, data = h3_df)
+#   df1   df2 statistic     p
+#   <int> <int>     <dbl> <dbl>
+# 1     2    57     0.950 0.393
+# variance is equal among groups
+
 #### H3 ART analysis  -----
-h3_df.art = art(Confidence_level ~ factor(meanPTT)*factor(Condition) + (1|ParticipantID), data = h3_df)
+h3_df.art = art(Confidence_level ~ factor(Condition) + (1|ParticipantID), data = h3_df)
+summary(h3_df.art)
 anova(h3_df.art)
+
 # Analysis of Variance of Aligned Rank Transformed Data
 # 
 # Table Type: Analysis of Deviance Table (Type III Wald F tests with Kenward-Roger df) 
@@ -235,6 +294,26 @@ anova(h3_df.art)
 # 3 factor(meanPTT):factor(Condition) 1.1648 22     16 0.382859  
 # ---
 #   Signif. codes:   0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+h3_df_no_outliers <- h3_df %>%
+  dplyr::select(ParticipantID == 30524 & Confidence_level == 1)
+
+
+outliers <- list(30524, 90593, 14609, 11942, 30524, 96216)
+
+h3_df_no_outliers <- h3_df %>%
+  filter(!ParticipantID %in% c(outliers))
+
+#### H3 ART analysis  -----
+h3_df_no_outliers.art = art(Confidence_level ~ factor(Condition) + (1|ParticipantID), data = h3_df_no_outliers)
+summary(h3_df_no_outliers.art)
+anova(h3_df_no_outliers.art)
+
+#simple one way anova
+h3_df_no_outliers.aov <- aov(Confidence_level ~ factor(Condition) + (1|ParticipantID), data = h3_df_no_outliers)
+summary(h3_df_no_outliers.aov)
+#significant when using oneway anova withouth art applied, removed outliers
+
 
 #### H3 Normality -----
 shapiro.test(residuals(h3_df.art))
