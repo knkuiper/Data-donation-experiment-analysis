@@ -8,6 +8,7 @@ library(MASS)
 library(ggplot2)
 library(viridis)
 library(cowplot)
+library(stringr)
 
 ## Load data
 pre_survey <- read_csv("data/Clean_data/pre_survey.csv")
@@ -437,24 +438,28 @@ ggplot(post_survey, aes(x = Q4.6_post)) +
   geom_bar(fill = "cornflowerblue") +
   #scale_fill_manual(values = color_conditions_w_grey) +
   labs(title = "", x = "", y = "Count") +
-  scale_x_discrete(labels = c("Don't know", "Condition A", "Condition B", "Condition C"), drop = FALSE) +
+  scale_x_discrete(labels = str_wrap(
+    c("Don't know / No preference", "BASELINE", "ABSTRACT", "CONCRETE"), width = 10), drop = FALSE) +
   theme_minimal() + 
   ylim(0, 8) +
   theme(legend.position = "none") +
   theme(text = element_text(size = 17), axis.text = element_text(size = 17))
 
-# saved 15.11.21
+# saved 03.12.21
 # ggsave("figures/post_survey_edaplots/version_pref.png", width = 9, height = 9, bg = "white")
 
 #Q5.1 Willingness to donate again
 ggplot(post_survey, aes(x = Q5.1_post)) +
   geom_bar(fill = "cornflowerblue") +
-  #scale_x_discrete(drop = FALSE) +
+  scale_x_discrete(labels = str_wrap(
+    c("No, I would probably not be willing to", 
+      "Yes, I would definitely be willing to", 
+      "Yes, I would probably be willing to"), width = 23), drop = FALSE) +
   labs(title = "", x = "", y = "Count") +
   theme_minimal() + 
   theme(legend.position = "none") +
   theme(text = element_text(size = 17), axis.text = element_text(size = 17))
 
 # saved 15.11.21
-# ggsave("figures/post_survey_edaplots/willingness_donate_again.png", width = 9, height = 9, bg = "white")
+ ggsave("figures/post_survey_edaplots/willingness_donate_again.png", width = 9, height = 9, bg = "white")
 
